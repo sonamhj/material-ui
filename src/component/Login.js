@@ -15,6 +15,7 @@ class Login extends Component{
 		return(
 				<div>
 				<TextField
+                type= "email"
       					hintText="Email"
       					floatingLabelText="Enter Email"
       					value= {this.state.email}
@@ -22,6 +23,7 @@ class Login extends Component{
       					
     					/><br />					 
       					   <TextField
+                   type= "Password"
       						hintText="Password"
       						floatingLabelText="Enter Password"
       						value={this.state.apikey}
