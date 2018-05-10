@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from './Header';
+import Body from './Body';
 
 
 class Dashboard extends Component {
@@ -10,7 +11,7 @@ class Dashboard extends Component {
       
         <Header />
 
-        This is Admin Panel
+        <Body/>
         
       </div>
     )

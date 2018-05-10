@@ -2,8 +2,25 @@ import React, {Component} from  'react';
 // material ui 
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import {Card, CardHeader, CardTitle, CardText} from 'material-ui/Card';
 
 class Login extends Component{
+   alignCenter = {
+    height: "100vh",              
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+
+  }
+
+floatingLabelFocusStyle ={
+  color:  "#512DA8"
+}
+underlineStyle ={
+  borderColor : "#512DA8"
+}
+
+
 	constructor(props){
 		super(props)
 		this.state= {
@@ -13,25 +30,36 @@ class Login extends Component{
 	}
 	render(){
 		return(
-				<div>
-				<TextField
+				<div style={this.alignCenter}>
+        <Card>
+        
+        <CardText>
+				<TextField  
                 type= "email"
       					hintText="Email"
-      					floatingLabelText="Enter Email"
+               	floatingLabelText="Enter Email"
+                floatingLabelStyle={this.floatingLabelStyle}
+                floatingLabelFocusStyle={this.floatingLabelFocusStyle}
+                underlineFocusStyle={this.underlineStyle}
       					value= {this.state.email}
       					onChange={ (e) => this.onChangeEmail(e) }
       					
-    					/><br />					 
+    					/><br /> 					 
       					   <TextField
                    type= "Password"
       						hintText="Password"
       						floatingLabelText="Enter Password"
+                  floatingLabelStyle={this.floatingLabelStyle}
+                floatingLabelFocusStyle={this.floatingLabelFocusStyle}
+                underlineFocusStyle={this.underlineStyle}
       						value={this.state.apikey}
               				onChange={ (e) => this.onChangePassword(e) }
       							/> <br /> 	
-    											
-					<RaisedButton label= "Submit" primary={true} onClick={ () => this.submitForm()}/>
-
+                    </CardText>
+                    <CardText>    											
+					<RaisedButton backgroundColor ="#512DA8" label= "Submit" labelColor="white" onClick={ () => this.submitForm()}/>
+          </CardText>
+          </Card>
 				</div>
 				
 			)

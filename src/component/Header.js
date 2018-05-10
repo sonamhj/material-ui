@@ -6,10 +6,14 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Account from './Account';
 class Header extends Component{
+	appStyle = {
+       backgroundColor: '#512DA8'
+  } 
 	constructor(props){
 		super(props)
 		this.state={
 			sidebarOpen: false,
+			email:''
 			
 		}
 	}
@@ -17,9 +21,9 @@ class Header extends Component{
 		return(
 			<div>
 			
-			<AppBar
-				title= "Sagarmatha"
-				 iconElementRight={ <Account/>}
+			<AppBar style={this.appStyle}
+				title= "Welcome to Dashboard"
+				 iconElementRight={ <Account email={this.state.email}/>}
 				onLeftIconButtonClick={() => this.toggleSidebar()}
 				/>
 				
@@ -37,6 +41,11 @@ class Header extends Component{
 	toggleSidebar(){
 		this.setState({sidebarOpen: !this.state.sidebarOpen})
 	}
+	 componentWillMount() {
+    this.setState({
+      email: sessionStorage.getItem('email')
+    })
+  }
 	
 }
 export default Header; 

@@ -28,7 +28,7 @@ class Account extends Component{
       anchorOrigin={{horizontal: 'left', vertical: 'top'}}
       targetOrigin={{horizontal: 'left', vertical: 'top'}}
          >
-       
+       <MenuItem primaryText={this.props.email} />
         <MenuItem primaryText="Sign out" onClick={() => this.signOut() } />
     </IconMenu>
    
