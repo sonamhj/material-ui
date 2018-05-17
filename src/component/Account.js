@@ -12,16 +12,7 @@ class Account extends Component{
 		return(
 					<div>
 					 <IconButton> <Explore color={"#FFF"}/> </IconButton>
-					  <IconMenu
-      iconButtonElement={<IconButton><NotificationsIcon color={"#FFF"}/> 
-      </IconButton>} 
-
-      anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-      targetOrigin={{horizontal: 'left', vertical: 'top'}}
-    >
-    </IconMenu>
-
-						  <IconMenu
+					 <IconMenu
       iconButtonElement={<IconButton><AccountBox color={"#FFF"}/> 
       </IconButton>} 
 
