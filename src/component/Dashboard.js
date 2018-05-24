@@ -11,7 +11,7 @@ class Dashboard extends Component {
       
         <Header />
           <p>this is dashboard</p>
-        <Body/>
+        
         
       </div>
     )

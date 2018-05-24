@@ -11,6 +11,10 @@ class Header extends Component{
 	appStyle = {
        backgroundColor: '#512DA8'
   } 
+  line ={
+	textDecoration: 'none',
+}
+ 
 	constructor(props){
 		super(props)
 		this.state={
@@ -32,8 +36,10 @@ class Header extends Component{
 				<Drawer open={this.state.sidebarOpen}
 					docked= {false}
 					onRequestChange={() => this.toggleSidebar()} >
-					<MenuItem><Link to='/dashboard'> Home</Link> </MenuItem>
-					<MenuItem><Link to='/links'> Link</Link> </MenuItem>
+					<MenuItem><Link style={this.line} to='/dashboard'> Home</Link> </MenuItem>
+					<MenuItem><Link  style={this.line} to='/links'> Link</Link> </MenuItem>
+					<MenuItem><Link  style={this.line} to='/createlink'>Create link</Link></MenuItem> 
+					<MenuItem><Link to='/editlink'>EditLInk</Link></MenuItem>
 					<MenuItem> Things to do </MenuItem>
 				</Drawer>
 								 
