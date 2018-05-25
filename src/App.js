@@ -6,7 +6,7 @@ import Login from './component/Login'
 import Dashboard from './component/Dashboard';
 import RebrandlyLinks from './component/links/RebrandlyLinks';
 import CreateLink from './component/CreateLink';
-import EditLink from '../links/EditLinks';
+import EditLink from './component/links/EditLinks';
 
 class App extends Component {
   render() {
@@ -17,9 +17,9 @@ class App extends Component {
               <Route path= "/login" component={Login}/>
               <Route exact path="/" render={() => (<Redirect to="/login"/>)} />
               <Route path= "/dashboard" component={Dashboard}/>
-              <Route path="/links" component={RebrandlyLinks}/>
-              <Route path="/createlink" component={CreateLink}/>
-              <Route path="/editlink/:id/edit" component={EditLink}/>
+              <Route exact path="/links" component={RebrandlyLinks}/>
+              <Route path="/link/new" component={CreateLink}/>
+              <Route path="/link/:id/edit" component={EditLink}/>
           </Switch>
         </BrowserRouter>
         

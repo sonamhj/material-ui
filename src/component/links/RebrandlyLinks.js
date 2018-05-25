@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
-import EditLinks from '../EditLinks';
+//import EditLinks from './component/links/EditLinks';
 
 //material-ui component
 import RaisedButton from 'material-ui/RaisedButton';
+//redux
+import {connect} from 'react-redux';
 
 import {
     Table,
@@ -26,6 +28,7 @@ class RebrandlyLinks extends Component{
             links: []
         }
     }
+
      render(){
         return(
             <div>
@@ -40,15 +43,15 @@ class RebrandlyLinks extends Component{
                 </TableHeader>
                 <TableBody displayRowCheckbox={false}>
                     {
-                        this.state.links.map(link =>{
+                        this.state.links.map(link =>{ //state bata props ma change gareko as connect use garyo vane properties available garauxa and links ko satta lists rakhne as we hav changed nam below
                             return(
                                 <TableRow key={link.id}>
                                     <TableRowColumn>{link.title}</TableRowColumn>
                                     <TableRowColumn>{link.destination}</TableRowColumn>
                                     <TableRowColumn>{link.shortURL}</TableRowColumn>
                                     <TableRowColumn>
-                                        <RaisedButton style={this.alignCenter} label="Edit" onclick={this.props.history.push(`/editlink/${link.id}/edit`)}/>
-                                         <RaisedButton style={this.alignCenter} label="Remove" onClick={ ()=>{this.onButtonClick()}}/>
+                                        <RaisedButton style={this.alignCenter} label="Edit" onClick={() => this.props.history.push(`/link/${link.id}/edit`)}/>
+                                        <RaisedButton style={this.alignCenter} label="Remove" onClick={ ()=>{this.onDeleteClick(link.id)}}/>
                                     </TableRowColumn>
 
                                 </TableRow>
@@ -62,32 +65,36 @@ class RebrandlyLinks extends Component{
         )}
 
         componentWillMount(){
-            this.listlink();
+          this.listlink();
         }
 
-         listlink(){
-                const apikeysession=sessionStorage.getItem('apikey')
-                    debugger
-                    if(apikeysession)
-                    {
-                        this.validateapikey(apikeysession)
-                        .then(res=>{
-                            if(res.ok){
-                                res.json().then(data=>{
-                                    this.setState({
-                                        links: data
-                                    })
-                             })
-                         }
-                    })
-                }
-            }
-        onButtonClick(){
-            var url = 'https://api.rebrandly.com/v1/links';
+        listlink(){
+            fetch('https://api.rebrandly.com/v1/links',{
+                    headers:{
+                        apikey: sessionStorage.getItem('apikey')
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        response.json()
+                        .then(data => {
+                            this.setState({
+                                links: data
+                            })
+                        })
+                    }
+                    else {
+                        alert(response.statusText)
+                    }
+                })      
+        }
+
+        onDeleteClick(link){
+            const url = `https://api.rebrandly.com/v1/links/${link}`;
             const apikey=sessionStorage.getItem('apikey')
            
             fetch(url, {
-              method: 'delete', // or 'PUT'
+              method: 'delete', 
               headers: {
                   apikey:  apikey,
                 'Content-Type': 'application/json'
@@ -96,9 +103,9 @@ class RebrandlyLinks extends Component{
             .then(res=>{
                 if(res.ok){
                     res.json()
-                        .then(data=>{
+                        .then(res=>{
                            
-                        this.props.history.push('/links')
+                        this.listlink()
                     })
                 }
                 
@@ -108,6 +115,11 @@ class RebrandlyLinks extends Component{
             })
                    
             }
-    
     }
-export default RebrandlyLinks;
+    //function mapStateToProps(state) {
+      //  return({
+        //    lists:state.links
+        //})
+    //}
+export default RebrandlyLinks;// first ma connect the export .it will connect our coponent and store from which data can be extracted
+//now conect will make lists as properties in rebrandlyLinks, yo garyo vane sate ma kam garnu pardaina

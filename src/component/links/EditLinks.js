@@ -3,9 +3,9 @@ import TextField from 'material-ui/TextField';
 import {Card, CardHeader, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 //component
-import Header from './Header';
+import Header from '../Header';
 
-class CreateLink extends Component{
+class EditLinks extends Component{
     alignCenter = {
         height: "100vh",              
         display: "flex",
@@ -61,8 +61,8 @@ class CreateLink extends Component{
         };
         
         fetch(url, {
-          method: 'POST', // or 'PUT'
-          body: JSON.stringify(data), // data can be `string` or {object}!
+          method: 'POST', 
+          body: JSON.stringify(data), 
           headers: {
               apikey:  apikey,
             'Content-Type': 'application/json'

@@ -37,9 +37,8 @@ class Header extends Component{
 					docked= {false}
 					onRequestChange={() => this.toggleSidebar()} >
 					<MenuItem><Link style={this.line} to='/dashboard'> Home</Link> </MenuItem>
-					<MenuItem><Link  style={this.line} to='/links'> Link</Link> </MenuItem>
-					<MenuItem><Link  style={this.line} to='/createlink'>Create link</Link></MenuItem> 
-					<MenuItem><Link to='/editlink'>EditLInk</Link></MenuItem>
+					<MenuItem><Link  style={this.line} to='/links'> Links</Link> </MenuItem>
+					<MenuItem><Link  style={this.line} to='/link/new'>Create link</Link></MenuItem> 
 					<MenuItem> Things to do </MenuItem>
 				</Drawer>
 								 
